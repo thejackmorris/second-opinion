@@ -3,11 +3,13 @@ import * as https from 'https';
 import { IncomingMessage } from 'http';
 
 async function askAnthropic(plugin: SecondOpinion, question: string): Promise<any> {
+	// Confirms that the user has set the Anthropic API key
+	// Does not confirm that the key is valid
 	if (!plugin.settings.anthropicApiKey) {
 		throw new Error('Anthropic API key not set. Please set your API key in the plugin settings.');
 	}
 	
-	console.log('Making Anthropic API call with key:', 'Key is set');
+	console.log('Confirming API key is set:', 'Key is set');
 	
 	return new Promise((resolve, reject) => {
 		const data = JSON.stringify({
